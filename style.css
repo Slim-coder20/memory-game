@@ -5,6 +5,15 @@ body {
   color: rgb(238, 50, 50);
 }
 
+h1 {
+  font-size: 50px;
+  color: #ff5722;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 #d84315, 6px 6px 0 #bf360c,
+    9px 9px 0 rgba(0, 0, 0, 0.2);
+}
+
 .card {
   width: 100px; /* ou autre dimension souhaitée */
   height: 100px;
