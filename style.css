@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: rgb(231, 231, 79);
+  color: rgb(238, 50, 50);
+}
+
+.card {
+  width: 100px; /* ou autre dimension souhaitée */
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Agrandissement léger au survol */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.25); /* Ombre plus marquée au survol */
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajuste l'image pour remplir l'espace sans déformer */
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 30px auto;
+}
