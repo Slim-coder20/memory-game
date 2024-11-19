@@ -37,3 +37,17 @@ body {
   justify-content: center;
   margin: 30px auto;
 }
+
+/* Masquer les cartes */
+
+.card {
+  background-color: #f4b74d;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.card .card-content {
+  opacity: 0;
+}
