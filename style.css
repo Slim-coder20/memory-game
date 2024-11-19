@@ -19,7 +19,7 @@ body {
 }
 
 .card:hover {
-  transform: scale(1.05); /* Agrandissement léger au survol */
+  transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.25); /* Ombre plus marquée au survol */
 }
 
@@ -50,4 +50,33 @@ body {
 
 .card .card-content {
   opacity: 0;
+}
+
+/* Styliser le Boutton */
+
+#start-button {
+  background-color: #ff5722;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+#start-button:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+#start-button:active {
+  transform: scale(0.95);
+  background-color: #d84315;
+}
+
+#start-button:focus {
+  outline: 2px solid #ffccbc;
 }
