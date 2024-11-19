@@ -92,12 +92,11 @@ function onCardClick(e){
 
 }
 
-// Ajouter la gestion d'un chrnometre // 
-
+// Variables globales
 let timerInterval;
 let timeElapsed = 0;
 let matchedPairs = 0;
- allCards = []; // Stocke les cartes actuelles
+ allCards = [];
  selectedCards = [];
 
 // Chronomètre
@@ -115,15 +114,30 @@ function resetTimer() {
     document.getElementById('timer').innerText = `Temps : 0s`;
 }
 
-// Fin de partie
-function checkEndGame() {
-    if (document.querySelectorAll('.matched').length === allCards.length) {
-        clearInterval(timerInterval); // Arrête le chronomètre
-        alert(`Bravo ! Vous avez complété le jeu en ${timeElapsed} secondes.`);
-        document.getElementById('recommencer-button').style.display = 'block'; // Affiche recommencer
-        
-    }
+// Fonction pour mélanger et dupliquer les cartes
+function duplicateArray(array) {
+    return [...array, ...array];
 }
+
+function shuffleArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+// Fonction pour créer une carte
+function createCard(cardUrl) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.value = cardUrl;
+
+    const cardContent = document.createElement('img');
+    cardContent.classList.add('card-content');
+    cardContent.src = cardUrl;
+
+    card.appendChild(cardContent);
+    card.addEventListener('click', onCardClick);
+    return card;
+}
+
 // Gérer le clic sur les cartes
 function onCardClick(e) {
     const card = e.target.parentElement;
@@ -147,33 +161,18 @@ function onCardClick(e) {
     }
 }
 
-// Fonction pour créer les cartes
-function createCard(cardUrl) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.dataset.value = cardUrl;
-
-    const cardContent = document.createElement('img');
-    cardContent.classList.add('card-content');
-    cardContent.src = cardUrl;
-
-    card.appendChild(cardContent);
-    card.addEventListener('click', onCardClick);
-    return card;
+// Vérification de fin de partie
+function checkEndGame() {
+    if (document.querySelectorAll('.matched').length === allCards.length) {
+        clearInterval(timerInterval);
+        alert(`Bravo ! Vous avez complété le jeu en ${timeElapsed} secondes.`);
+        document.getElementById('Recommencer-button').style.display = 'block'; // Affiche "Recommencer"
+    }
 }
 
-// Mélanger les cartes
-function shuffleArray(array) {
-    return array.sort(() => Math.random() - 0.5);
-}
-
-function duplicateArray(array) {
-    return [...array, ...array];
-}
-
-// Initialisation du jeu
+// Fonction pour démarrer une nouvelle partie
 function startGame() {
-    resetTimer();
+    resetTimer(); // Réinitialise le chronomètre
     matchedPairs = 0;
     selectedCards = []; // Réinitialise les cartes sélectionnées
 
@@ -195,22 +194,10 @@ function startGame() {
     });
 
     startTimer(); // Démarre le chronomètre
-    document.getElementById('start-button').style.display = 'none'; // Cache lancer
-    document.getElementById('recommencer-button').style.display = 'none'; // Cache recommencer
+    document.getElementById('start-button').style.display = 'none'; // Cache "Lancer"
+    document.getElementById('Recommencer-button').style.display = 'none'; // Cache "Recommencer" au début
 }
 
 // Boutons
 document.getElementById('start-button').addEventListener('click', startGame);
-document.getElementById('recommencer-button').addEventListener('click', startGame);
-
-// Gestion du bouton "Recommencer"
-document.getElementById('recommencer-button').addEventListener('click', () => {
-    startGame(); // Relance une nouvelle partie
-    startTimer(); // Redémarre le chronomètre
-
-    // Cache le bouton recommencer
-    document.getElementById('recommencer-button').style.display = 'none';
-
-    // Cache aussi le bouton lancer (au cas où)
-    document.getElementById('start-button').style.display = 'none';
-});
+document.getElementById('Recommencer-button').addEventListener('click', startGame);
