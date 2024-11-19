@@ -121,9 +121,9 @@ function checkEndGame() {
         clearInterval(timerInterval); // Arrête le chronomètre
         alert(`Bravo ! Vous avez complété le jeu en ${timeElapsed} secondes.`);
         document.getElementById('recommencer-button').style.display = 'block'; // Affiche recommencer
+        
     }
 }
-
 // Gérer le clic sur les cartes
 function onCardClick(e) {
     const card = e.target.parentElement;
@@ -202,3 +202,15 @@ function startGame() {
 // Boutons
 document.getElementById('start-button').addEventListener('click', startGame);
 document.getElementById('recommencer-button').addEventListener('click', startGame);
+
+// Gestion du bouton "Recommencer"
+document.getElementById('recommencer-button').addEventListener('click', () => {
+    startGame(); // Relance une nouvelle partie
+    startTimer(); // Redémarre le chronomètre
+
+    // Cache le bouton recommencer
+    document.getElementById('recommencer-button').style.display = 'none';
+
+    // Cache aussi le bouton lancer (au cas où)
+    document.getElementById('start-button').style.display = 'none';
+});
