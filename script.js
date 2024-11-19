@@ -22,6 +22,7 @@ function createCard(cardUrl){
     cardContent.src = cardUrl; 
 
     card.appendChild(cardContent);
+    card.addEventListener('click', onCardClick);
     return card; 
 
 }
@@ -52,4 +53,13 @@ allCards.forEach(card => {
 
 })
 
+// On créé une fonction qui nous permettra de retourner les cartes et on ajoute l'écoute avec addeventlistner dans la fonction createCrad// 
+
+function onCardClick(e){
+
+    const card = e.target.parentElement;
+
+    card.classList.add("flip");
+
+}
 
