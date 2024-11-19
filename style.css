@@ -105,4 +105,43 @@ h1 {
 
 .card.flip .card-content {
   opacity: 1;
+  max-width: 100%;
+}
+
+.card.matched {
+  border: solid 4px rgb(0, 255, 0);
+
+  box-sizing: border-box;
+
+  cursor: default;
+}
+
+.card .card-content {
+  max-width: 100%;
+}
+
+/* Styliser le Chronometre */
+#timer {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ff5722;
+}
+
+/* Animation pour rendre les cartes tournantes */
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card .card-content {
+  transition: all 0.3s;
+}
+
+.card {
+  /*animation*/
+
+  transform: rotateY(0deg);
+
+  transition: all 0.5s;
 }
